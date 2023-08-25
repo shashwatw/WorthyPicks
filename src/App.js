@@ -61,6 +61,16 @@ export default function App() {
         <NumResults movies={movies} />
       </NavBar>
       <Main>
+        {/* Router way of defining  */}
+        {/* <Box element={<MovieList movies={movies} />} />
+        <Box
+          element={
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedMoviesList watched={watched} />
+            </>
+          }
+        /> */}
         <Box>
           <MovieList movies={movies} />
         </Box>
@@ -68,7 +78,7 @@ export default function App() {
         {/* reusable box component */}
         <Box>
           <WatchedSummary watched={watched} />
-          <WatchedMoviesList watched={watched} />{" "}
+          <WatchedMoviesList watched={watched} />
         </Box>
       </Main>
     </>
