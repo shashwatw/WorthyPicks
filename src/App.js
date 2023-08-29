@@ -54,7 +54,7 @@ const average = (arr) =>
 const KEY = "5095e0a9";
 
 export default function App() {
-  const [query, setQuery] = useState("titanic");
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -119,8 +119,8 @@ export default function App() {
           setMovies(data.Search);
           setError("");
         } catch (err) {
-          console.log(err.message);
           if (err.name !== "AbortError ") {
+            console.log(err.message);
             setError(err.message);
           }
         } finally {
@@ -134,6 +134,7 @@ export default function App() {
         return;
       }
 
+      handleCloseMovie();
       fetchMovies();
 
       return function () {
@@ -350,6 +351,25 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onCloseMovie();
   }
 
+  //Mouse Events on escape key close the handler
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+          // console.log("Closing");
+        }
+      }
+
+      document.addEventListener("keydown", callback);
+
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseMovie]
+  );
+
   useEffect(
     function () {
       async function getMovieDetails() {
@@ -376,7 +396,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
         document.title = "usePopcorn";
 
         //here after unmounting still is able to remember title because of JS special feature where it remember the state of the item if it is just unmounted over a new funcion.
-        console.log(`Clean up function for movie ${title}`);
+        // console.log(`Clean up function for movie ${title}`);
       };
     },
     [title]
