@@ -364,6 +364,9 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
       return function () {
         document.title = "usePopcorn";
+
+        //here after unmounting still is able to remember title because of JS special feature where it remember the state of the item if it is just unmounted over a new funcion.
+        console.log(`Clean up function for movie ${title}`);
       };
     },
     [title]
