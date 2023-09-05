@@ -222,7 +222,7 @@ function Logo() {
   return (
     <div className="logo">
       <span role="img">🍿</span>
-      <h1>usePopcorn</h1>
+      <h1>WorthyPicks</h1>
     </div>
   );
 }
@@ -393,7 +393,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       document.title = `Movie | ${title}`;
 
       return function () {
-        document.title = "usePopcorn";
+        document.title = "WorthyPicks";
 
         //here after unmounting still is able to remember title because of JS special feature where it remember the state of the item if it is just unmounted over a new funcion.
         // console.log(`Clean up function for movie ${title}`);
