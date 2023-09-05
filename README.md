@@ -1,1 +1,1 @@
-[Live Site](https://use-popcorn-one.vercel.app/)
+[Live Site](https://worthypicks.vercel.app/)
